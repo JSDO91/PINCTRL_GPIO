@@ -1,0 +1,61 @@
+/dts-v1/;
+
+/plugin/;
+
+/ {
+
+        compatible = "brcm,bcm2835";
+
+ 
+
+        fragment@0{
+
+                target-path = "/";
+
+                __overlay__
+
+                {
+
+                        gpio_test: gpio_test
+
+                        {
+
+                                compatible = "company,led-gpio";
+
+                                pinctrl-names = "default";
+
+                                pinctrl-0 = <&led_gpio5>;
+
+                                status = "okay";
+
+                        };
+
+                };
+
+        };
+
+ 
+
+        fragment@1{
+
+                target = <&gpio>;
+
+                __overlay__
+
+                {
+
+                        led_gpio5: led_gpio5
+
+                        {
+
+                                brcm,pins = <5 6>;
+
+                                brcm,function = <1>;
+
+                        };
+
+                };
+
+        };
+
+};
